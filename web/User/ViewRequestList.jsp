@@ -10,7 +10,7 @@
     </head>
     <%@include file="Head.jsp" %>
     <body>
-       <iframe style="border: none; border-radius: 15px; width: 100%; height: 653px ;" src = "Property.jsp" ></iframe>
+        <iframe style="border: none; border-radius: 15px; width: 100%; height: 653px ;" src = "ViewRequest.jsp" ></iframe>
     </body>
     <%@include file="Foot.jsp" %>
 

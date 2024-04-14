@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2024 at 08:31 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- Generation Time: Apr 14, 2024 at 11:15 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,8 +31,15 @@ CREATE TABLE `tbl_admin` (
   `admin_id` int(11) NOT NULL,
   `admin_name` varchar(30) NOT NULL,
   `admin_email` varchar(30) NOT NULL,
-  `admin_passwod` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `admin_password` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_admin`
+--
+
+INSERT INTO `tbl_admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
+(1, 'Admin', 'admin@gmail.com', 'admin@123');
 
 -- --------------------------------------------------------
 
@@ -44,12 +51,11 @@ CREATE TABLE `tbl_complaint` (
   `complaint_id` int(11) NOT NULL,
   `complaint_title` varchar(30) NOT NULL,
   `complaint_content` varchar(25) NOT NULL,
-  `complaint_status` varchar(30) NOT NULL,
-  `complaint_reply` varchar(30) NOT NULL,
-  `owner_id` int(11) NOT NULL,
-  `complaint_date` varchar(25) NOT NULL,
-  `use_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `complaint_status` varchar(30) NOT NULL DEFAULT '0',
+  `complaint_reply` varchar(30) NOT NULL DEFAULT 'Not Yet Replyed',
+  `complaint_date` varchar(25) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,15 +66,7 @@ CREATE TABLE `tbl_complaint` (
 CREATE TABLE `tbl_country` (
   `country_id` int(11) NOT NULL,
   `country_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_country`
---
-
-INSERT INTO `tbl_country` (`country_id`, `country_name`) VALUES
-(2, 'India'),
-(5, 'Australia');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -80,27 +78,7 @@ CREATE TABLE `tbl_district` (
   `district_id` int(11) NOT NULL,
   `district_name` varchar(30) NOT NULL,
   `state_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_district`
---
-
-INSERT INTO `tbl_district` (`district_id`, `district_name`, `state_id`) VALUES
-(2, 'Ernakulam', 5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_feedback`
---
-
-CREATE TABLE `tbl_feedback` (
-  `feedback_id` int(11) NOT NULL,
-  `feedback_content` varchar(30) NOT NULL,
-  `owner_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -112,7 +90,7 @@ CREATE TABLE `tbl_gallery` (
   `gallery_id` int(11) NOT NULL,
   `gallery_image` varchar(30) NOT NULL,
   `rent_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -127,12 +105,11 @@ CREATE TABLE `tbl_officer` (
   `officer_email` varchar(25) NOT NULL,
   `officer_address` varchar(30) NOT NULL,
   `officer_gender` varchar(10) NOT NULL,
-  `officer_photo` varchar(30) NOT NULL,
   `officer_password` varchar(30) NOT NULL,
   `officer_doj` varchar(30) NOT NULL,
   `state_id` int(11) NOT NULL,
   `subadmin_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -154,14 +131,7 @@ CREATE TABLE `tbl_owner` (
   `owner_doj` varchar(30) NOT NULL,
   `owner_status` varchar(30) NOT NULL DEFAULT '0',
   `place_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_owner`
---
-
-INSERT INTO `tbl_owner` (`owner_id`, `owner_name`, `owner_contact`, `owner_email`, `owner_address`, `owner_zipcode`, `owner_gender`, `owner_photo`, `owner_proof`, `owner_password`, `owner_doj`, `owner_status`, `place_id`) VALUES
-(1, 'hi', '2345678789', 'ertyjuk', '1234567', 'female', '2', 'ownerPhoto_2035.jfif', 'ownerproof_1885.jfif', 'submit', '2024-03-04', '0', 2345);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -173,15 +143,7 @@ CREATE TABLE `tbl_place` (
   `place_id` int(11) NOT NULL,
   `place_name` varchar(30) NOT NULL,
   `district_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_place`
---
-
-INSERT INTO `tbl_place` (`place_id`, `place_name`, `district_id`) VALUES
-(2, 'Muvattupuzha', 2),
-(3, 'perumbavoor', 2);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -194,12 +156,12 @@ CREATE TABLE `tbl_rent` (
   `rent_name` varchar(30) NOT NULL,
   `rent_image` varchar(25) NOT NULL,
   `rent_amount` varchar(30) NOT NULL,
-  `rent_status` varchar(30) NOT NULL,
+  `rent_status` varchar(30) NOT NULL DEFAULT '0',
   `rent_details` varchar(100) NOT NULL,
   `owner_id` int(11) NOT NULL,
   `renttype_id` int(11) NOT NULL,
   `place_id` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -209,13 +171,13 @@ CREATE TABLE `tbl_rent` (
 
 CREATE TABLE `tbl_rentbook` (
   `book_id` int(11) NOT NULL,
-  `book_from_date` varchar(30) NOT NULL,
-  `book_to_date` varchar(25) NOT NULL,
+  `book_from_date` varchar(30) NOT NULL DEFAULT '0',
+  `book_to_date` varchar(25) NOT NULL DEFAULT '0',
   `booked_date` varchar(30) NOT NULL,
-  `booking_status` varchar(30) NOT NULL,
+  `booking_status` varchar(30) NOT NULL DEFAULT '0',
   `rent_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -226,7 +188,7 @@ CREATE TABLE `tbl_rentbook` (
 CREATE TABLE `tbl_renttype` (
   `renttype_id` int(11) NOT NULL,
   `renttype_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -238,15 +200,7 @@ CREATE TABLE `tbl_state` (
   `state_id` int(11) NOT NULL,
   `state_name` varchar(30) NOT NULL,
   `country_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_state`
---
-
-INSERT INTO `tbl_state` (`state_id`, `state_name`, `country_id`) VALUES
-(5, 'Kerala', 2),
-(6, 'Goa', 2);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -260,11 +214,10 @@ CREATE TABLE `tbl_subadmin` (
   `subadmin_contact` varchar(30) NOT NULL,
   `subadmin_email` varchar(30) NOT NULL,
   `subadmin_address` varchar(30) NOT NULL,
-  `subadmin_photo` varchar(40) NOT NULL,
   `subadmin_password` varchar(20) NOT NULL,
   `subadmin_doj` varchar(30) NOT NULL,
   `country_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -284,9 +237,9 @@ CREATE TABLE `tbl_user` (
   `user_proof` varchar(30) NOT NULL,
   `user_password` varchar(40) NOT NULL,
   `user_doj` varchar(20) NOT NULL,
-  `user_status` varchar(30) NOT NULL,
+  `user_status` varchar(30) NOT NULL DEFAULT '0',
   `place_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -315,12 +268,6 @@ ALTER TABLE `tbl_country`
 --
 ALTER TABLE `tbl_district`
   ADD PRIMARY KEY (`district_id`);
-
---
--- Indexes for table `tbl_feedback`
---
-ALTER TABLE `tbl_feedback`
-  ADD PRIMARY KEY (`feedback_id`);
 
 --
 -- Indexes for table `tbl_gallery`
@@ -371,6 +318,12 @@ ALTER TABLE `tbl_state`
   ADD PRIMARY KEY (`state_id`);
 
 --
+-- Indexes for table `tbl_subadmin`
+--
+ALTER TABLE `tbl_subadmin`
+  ADD PRIMARY KEY (`subadmin_id`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -384,7 +337,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_complaint`
@@ -396,19 +349,13 @@ ALTER TABLE `tbl_complaint`
 -- AUTO_INCREMENT for table `tbl_country`
 --
 ALTER TABLE `tbl_country`
-  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_district`
 --
 ALTER TABLE `tbl_district`
-  MODIFY `district_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_feedback`
---
-ALTER TABLE `tbl_feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `district_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_gallery`
@@ -426,13 +373,13 @@ ALTER TABLE `tbl_officer`
 -- AUTO_INCREMENT for table `tbl_owner`
 --
 ALTER TABLE `tbl_owner`
-  MODIFY `owner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `owner_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_place`
 --
 ALTER TABLE `tbl_place`
-  MODIFY `place_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `place_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_rent`
@@ -456,7 +403,13 @@ ALTER TABLE `tbl_renttype`
 -- AUTO_INCREMENT for table `tbl_state`
 --
 ALTER TABLE `tbl_state`
-  MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_subadmin`
+--
+ALTER TABLE `tbl_subadmin`
+  MODIFY `subadmin_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

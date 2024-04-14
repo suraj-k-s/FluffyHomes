@@ -12,7 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Owner</title>
     </head>
+    <%@include file="Head.jsp" %>
     <body>
+         <h2>Owner Registration</h2>
         <form enctype="multipart/form-data" method="post" action="../Assets/ActionPages/OwnerUploadAction.jsp">
             <form method="POST">
                 <table border="1">
@@ -139,5 +141,5 @@
             </script>
 
     </body>
-
+    <%@include file="Foot.jsp" %>
 </html>

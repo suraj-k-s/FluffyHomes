@@ -25,6 +25,7 @@
         <link rel="stylesheet" type="text/css" href="../Assets/Template/Main/css/nivo-lightbox/default.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        <link href="../Assets/Template/form.css" rel="stylesheet">
 
     </head>
     <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -35,7 +36,7 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                    <a class="navbar-brand page-scroll" href="index.html">Fluffy Homes</a>
+                    <a class="navbar-brand page-scroll" href="../index.html">Fluffy Homes</a>
                     <div class="phone"><span>Call Today</span>987456321</div>
                 </div>
 
@@ -46,39 +47,11 @@
                         <li><a href="MyProfile.jsp" class="page-scroll">Profile</a></li>
                         <li><a href="AddNewProperty.jsp" class="page-scroll">New Property</a></li>
                         <li><a href="PropertyList.jsp" class="page-scroll">Property List</a></li>
-                        <li><a href="../Guest/Login.jsp" class="page-scroll">Login</a></li>
+                        <li><a href="../Guest/Login.jsp" class="page-scroll">Logout</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse --> 
             </div>
         </nav>
-        <!-- Header -->
-        <header id="header">
-            <div class="intro">
-                <div class="overlay">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2 intro-text">
-                                <h1>Home</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </header>
-
-        <!-- Footer Section -->
-        <div id="footer">
-            <div class="container text-center">
-                <p>&copy; 2024 Fluffy Homes. Design by Rinu</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="../Assets/Template/Main/js/jquery.1.11.1.js"></script> 
-        <script type="text/javascript" src="../Assets/Template/Main/js/bootstrap.js"></script> 
-        <script type="text/javascript" src="../Assets/Template/Main/js/SmoothScroll.js"></script> 
-        <script type="text/javascript" src="../Assets/Template/Main/js/nivo-lightbox.js"></script> 
-        <script type="text/javascript" src="../Assets/Template/Main/js/jqBootstrapValidation.js"></script> 
-        <script type="text/javascript" src="../Assets/Template/Main/js/contact_me.js"></script> 
-        <script type="text/javascript" src="../Assets/Template/Main/js/main.js"></script>
-    </body>
-</html>
+        <br><br><br><br><br><br><br>
+        <div id="tab" align="center">

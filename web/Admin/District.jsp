@@ -21,17 +21,18 @@
 
             id = request.getParameter("edit");
             name = request.getParameter("name");
+            dis = request.getParameter("id");
 
         }
 
         if (request.getParameter("btn_save") != null) {
 
             if (request.getParameter("hid").equals("")) {
-                String insQry = "insert into tbl_district(district_name)values('" + request.getParameter("txt_district") + "')";
+                String insQry = "insert into tbl_district(state_id,district_name)values('" + request.getParameter("sel_state") + "','" + request.getParameter("txt_district") + "')";
                 con.executeCommand(insQry);
                 response.sendRedirect("District.jsp");
             } else {
-                String upQry = "update tbl_district set district_name='" + request.getParameter("txt_district") + "' where district_id='" + request.getParameter("hid") + "'";
+                String upQry = "update tbl_district set state_id='" + request.getParameter("sel_state") + "',district_name='" + request.getParameter("txt_district") + "' where district_id='" + request.getParameter("hid") + "'";
                 con.executeCommand(upQry);
                 System.out.println(upQry);
                 response.sendRedirect("District.jsp");
@@ -68,6 +69,23 @@
                                             </div>
                                             <form>
                                                 <div class="form-group">
+                                                    <label for="sel_state">Select State</label>
+                                                    <select required="" class="form-control" name="sel_state" id="sel_state">
+                                                        <option value="" >Select</option>
+                                                        <%                                                            String disQry = "select * from tbl_state";
+                                                            ResultSet rs1 = con.selectCommand(disQry);
+                                                            while (rs1.next()) {
+                                                        %>
+                                                        <option value="<%=rs1.getString("state_id")%>" <%if (dis.equals(rs1.getString("state_id"))) {
+                                                                out.println("selected");
+                                                            }%>><%=rs1.getString("state_name")%></option>
+                                                        <%
+                                                            }
+
+                                                        %>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="txt_district">District Name</label>
                                                     <input required="" type="text" class="form-control" value="<%=name%>" id="txt_district" name="txt_district">
                                                     <input type="hidden" name="hid" value="<%=id%>">
@@ -86,13 +104,14 @@
                                         <thead>
                                             <tr style="background-color: #74CBF9">
                                                 <td align="center" scope="col">Sl.No</td>
+                                                <td align="center" scope="col">State</td>
                                                 <td align="center" scope="col">District</td>
                                                 <td align="center" scope="col">Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <%                                                int i = 0;
-                                                String selQry = "select * from tbl_district ";
+                                                String selQry = "select * from tbl_district p inner join tbl_state d on d.state_id=p.state_id";
                                                 ResultSet rs = con.selectCommand(selQry);
                                                 while (rs.next()) {
 
@@ -101,10 +120,11 @@
                                             %>
                                             <tr>    
                                                 <td align="center"><%=i%></td>
+                                                <td align="center"><%=rs.getString("state_name")%></td>
                                                 <td align="center"><%=rs.getString("district_name")%></td>
                                                 <td align="center"> 
                                                     <a href="District.jsp?del=<%=rs.getString("district_id")%>" class="status_btn">Delete</a> &nbsp;&nbsp;&nbsp;&nbsp; 
-                                                    <a class="status_btn" href="District.jsp?edit=<%=rs.getString("district_id")%>&name=<%=rs.getString("district_name")%>">Edit</a>
+                                                    <a class="status_btn" href="District.jsp?edit=<%=rs.getString("district_id")%>&name=<%=rs.getString("district_name")%>&id=<%=rs.getString("state_id")%>">Edit</a>
                                                 </td> 
                                             </tr>
                                             <%                      }

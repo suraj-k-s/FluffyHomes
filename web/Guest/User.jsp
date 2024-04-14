@@ -11,9 +11,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>User</title>
-    </head>
+    </head><%@include file="Head.jsp" %>
+
     <body>
-        <form method="POST">
+        <h2>User Registration</h2>
+        <form method="POST" action="../Assets/ActionPages/UserUploadAction.jsp" enctype="multipart/form-data">
             <table border="1">
                 <tr>
                     <td>Name</td>
@@ -25,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="email" name="" autocomplete="off" required=""/></td>
+                    <td><input type="email" name="txt_email" autocomplete="off" required=""/></td>
                 </tr>
                 <tr>
                     <td>Address</td>
@@ -33,7 +35,7 @@
                 </tr>
                 <tr>
                     <td>Zipcode</td>
-                    <td><input type="text" name="" autocomplete="off" required=""/></td>
+                    <td><input type="text" name="txt_zip" autocomplete="off" required=""/></td>
                 </tr>
                 <tr>
                     <td>Gender</td>
@@ -43,7 +45,7 @@
                 </tr>
                 <tr>
                     <td>Photo</td>
-                    <td><input type="file" name="file_proof"  required=""/></td>
+                    <td><input type="file" name="file_photo"  required=""/></td>
                 </tr>
                 <tr>
                     <td>Proof</td>
@@ -80,7 +82,7 @@
                 <tr>
                     <td>District</td>
                     <td>
-                        <select name="#seldistrict" id="seldistrict" onchange="getPlace(this.value)">
+                        <select name="seldistrict" id="seldistrict" onchange="getPlace(this.value)">
                             <option value="">---select---</option>
                         </select>
                     </td>
@@ -104,39 +106,39 @@
         </form>
         <script src="../Assets/JQ/jquery.js"></script>
         <script>
-                        function getState(cid)
-                        {
-                            $.ajax({
-                                url: "../Assets/AjaxPages/AjaxState.jsp?cid=" + cid,
-                                success: function(result) {
-                                    $("#selstate").html(result);
+                            function getState(cid)
+                            {
+                                $.ajax({
+                                    url: "../Assets/AjaxPages/AjaxState.jsp?cid=" + cid,
+                                    success: function(result) {
+                                        $("#selstate").html(result);
 
-                                }
-                            });
-                        }
-                        function getDistrict(sid)
-                        {
-                            $.ajax({
-                                url: "../Assets/AjaxPages/AjaxDistrict.jsp?sid=" + sid,
-                                success: function(result) {
-                                    $("#seldistrict").html(result);
+                                    }
+                                });
+                            }
+                            function getDistrict(sid)
+                            {
+                                $.ajax({
+                                    url: "../Assets/AjaxPages/AjaxDistrict.jsp?sid=" + sid,
+                                    success: function(result) {
+                                        $("#seldistrict").html(result);
 
-                                }
-                            });
-                        }
-                        function getPlace(did)
-                        {
-                            $.ajax({
-                                url: "../Assets/AjaxPages/AjaxPlace.jsp?did=" + did,
-                                success: function(result) {
-                                    $("#selplace").html(result);
+                                    }
+                                });
+                            }
+                            function getPlace(did)
+                            {
+                                $.ajax({
+                                    url: "../Assets/AjaxPages/AjaxPlace.jsp?did=" + did,
+                                    success: function(result) {
+                                        $("#selplace").html(result);
 
-                                }
-                            });
-                        }
+                                    }
+                                });
+                            }
 
         </script>
     </body>
-
+    <%@include file="Foot.jsp" %>
 </html>
 

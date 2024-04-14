@@ -2,7 +2,7 @@
         <script src="../Assets/Template/admin/js/jquery-3.4.1.min.js"></script>
         <!-- popper js -->
         <script src="../Assets/Template/admin/js/popper.min.js"></script>
-        <!-- bootstarp js -->
+        <!-- bootstarp js --> 
         <script src="../Assets/Template/admin/js/bootstrap.min.js"></script>
         <!-- sidebar menu  -->
         <script src="../Assets/Template/admin/js/metisMenu.js"></script>

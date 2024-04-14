@@ -1,10 +1,7 @@
-<%@include file="SessionValidator.jsp" %>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>S.S Industry Buying</title>
+<title>Sub Admin</title>
 
-<!-- <link rel="icon" href="../Assets/Template/admin/img/favicon.png" type="image/png"> -->
-<!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../Assets/Template/admin/css/bootstrap.min.css" />
 <!-- themefy CSS -->
 <link rel="stylesheet" href="../Assets/Template/admin/vendors/themefy_icon/themify-icons.css" />
@@ -41,7 +38,7 @@
 
 <nav class="sidebar">
     <div class="logo d-flex justify-content-between">
-        <a href="HomePage.jsp"><h4 align="center">Welcome<br><%=session.getAttribute("aname")%></h4></a>
+        <a href="HomePage.jsp"><h4 align="center">Welcome<br>Sub Admin</h4></a>
         <div class="sidebar_close_icon d-lg-none">
             <i class="ti-close"></i>
         </div>
@@ -55,67 +52,21 @@
                 <img src="../Assets/Template/admin/img/menu-icon/1.svg" alt="">
                 <span>Dashboard</span>
             </a>
-
         </li>
-        <li class="side_menu_title">
-            <span>tailor Management</span>
-        </li>
-        <li class="">
-            <a   class="has-arrow" href="#" aria-expanded="false">
+         <li>
+             <a  href="PropertyList.jsp"  aria-expanded="false">
                 <img src="../Assets/Template/admin/img/menu-icon/2.svg" alt="">
-                <span>tailor</span>
+                <span>Property</span>
             </a>
-            <ul>
-                <li><a href="NewtailorList.jsp">New tailor List</a></li>
-                <li><a href="AcceptedtailorList.jsp">Accepted tailor List</a></li>
-                <li><a href="RejectedtailorList.jsp">Rejected tailor List</a></li>
-            </ul>
         </li>
-        <li class="side_menu_title">
-            <span>weaver Management</span>
-        </li>
-        <li class="">
-            <a   class="has-arrow" href="#" aria-expanded="false">
+        <li>
+            <a  href="Officer.jsp"  aria-expanded="false">
                 <img src="../Assets/Template/admin/img/menu-icon/2.svg" alt="">
-                <span>weaver</span>
-            </a>
-            <ul>
-                <li><a href="NewweaverList.jsp">New weaver List</a></li>
-                <li><a href="AcceptedweaverList.jsp">Accepted weaver List</a></li>
-                <li><a href="RejectedweaverList.jsp">Rejected weaver List</a></li>
-            </ul>
-        </li>
-        <li class="side_menu_title">
-            <span>Basic Data's</span>
-        </li>
-        <li class="">
-            <a   class="has-arrow" href="#" aria-expanded="false">
-                <img src="../Assets/Template/admin/img/menu-icon/2.svg" alt="">
-                <span>Location</span>
-            </a>
-            <ul>
-                <li><a href="District.jsp">District</a></li>
-                <li><a href="Place.jsp">Place</a></li>
-            </ul>
-        </li>
-       
-        <li class="side_menu_title">
-            <span>Others</span>
-        </li>
-        <li class="">
-            <a   class="has-arrow" href="ReportList.jsp" aria-expanded="false">
-                <img src="../Assets/Template/admin/img/menu-icon/2.svg" alt="">
-                <span>Report</span>
+                <span>Officer</span>
             </a>
         </li>
         <li class="">
-            <a   class="has-arrow" href="ViewComplaint.jsp" aria-expanded="false">
-                <img src="../Assets/Template/admin/img/menu-icon/2.svg" alt="">
-                <span>Complaint</span>
-            </a>
-        </li>
-        <li class="">
-            <a   class="has-arrow" href="../logout.jsp" aria-expanded="false">
+            <a   class="has-arrow" href="../Guest/Login.jsp" aria-expanded="false">
                 <img src="../Assets/Template/admin/img/menu-icon/2.svg" alt="">
                 <span>Logout</span>
             </a>

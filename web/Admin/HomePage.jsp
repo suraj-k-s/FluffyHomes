@@ -29,22 +29,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="quick_activity_wrap">
-                                                <div class="single_quick_activity d-flex">
-                                                    <div class="icon">
-                                                        <img src="../Assets/Template/admin/img/icon/College.png" alt="">
-                                                    </div>
-                                                    <div class="count_content">
-                                                        <h3><span class="counter">
-                                                                <%                                                                String csel = "select count(*) as c from tbl_tailor where tailor_status='1'";
-                                                                    ResultSet cc = con.selectCommand(csel);
-                                                                    if (cc.next()) {
-                                                                        out.println(cc.getString("c"));
-                                                                    }
-                                                                %>
-                                                            </span> </h3>
-                                                        <p>tailor</p>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="single_quick_activity d-flex">
                                                     <div class="icon">
                                                         <img src="../Assets/Template/admin/img/icon/Student.png" alt="">
@@ -69,42 +54,6 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-12">
-                            <div class="white_box card_height_100">
-                                <div class="box_header border_bottom_1px  ">
-                                    <div class="main-title">
-                                        <h3 class="mb_25">tailor's</h3>
-                                    </div>
-                                </div>
-                                <div class="staf_list_wrapper sraf_active owl-carousel">
-
-
-                                    <%
-                                        String cQry = "select * from tbl_tailor c inner join tbl_place p on p.place_id=c.place_id ORDER BY RAND()";
-                                        ResultSet crs = con.selectCommand(cQry);
-                                        while (crs.next()) {
-
-                                    %>
-
-
-                                    <!-- single carousel  -->
-                                    <div class="single_staf">
-                                        <div class="staf_thumb">
-                                            <img src="../Assets/Files/<%=crs.getString("tailor_photo")%>" alt="">
-                                        </div>
-                                        <h4><%=crs.getString("tailor_name")%></h4>
-                                        <p><%=crs.getString("place_name")%></p>
-                                    </div>
-
-
-
-                                    <%
-
-                                        }
-                                    %>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-xl-12">
                             <div class="white_box card_height_100">
                                 <div class="box_header border_bottom_1px  ">
